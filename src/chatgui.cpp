@@ -2,6 +2,7 @@
 #include <wx/colour.h>
 #include <wx/image.h>
 #include <string>
+#include <iostream>
 #include "chatbot.h"
 #include "chatlogic.h"
 #include "chatgui.h"
@@ -117,6 +118,7 @@ ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
     //// STUDENT CODE
     ////
 
+    std::cout << "ChatBotPanelDialog Constructor" << std::endl;
     // create chat logic instance
     _chatLogic = new ChatLogic(); 
 
@@ -135,6 +137,7 @@ ChatBotPanelDialog::~ChatBotPanelDialog()
     //// STUDENT CODE
     ////
 
+    std::cout << "ChatBotPanelDialog Destructor" << std::endl;
     delete _chatLogic;
 
     ////

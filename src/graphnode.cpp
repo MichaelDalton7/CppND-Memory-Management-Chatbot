@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "graphedge.h"
 #include "graphnode.h"
 
@@ -10,9 +12,7 @@ GraphNode::~GraphNode()
 {
     //// STUDENT CODE
     ////
-
-    delete _chatBot; 
-
+    // _chatBot is a shared resource owned by chatlogic so we don't delete it here 
     ////
     //// EOF STUDENT CODE
 }
