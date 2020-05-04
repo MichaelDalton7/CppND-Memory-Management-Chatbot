@@ -14,6 +14,7 @@ GraphNode::~GraphNode()
     ////
     // _chatBot is a shared resource owned by chatlogic so we don't delete it here 
     // _childEdges is a vector of smart pointers so is cleared when out of scope
+    // if this node contains the pointer to the chat bot then it will be cleared when it is out of scope
     ////
     //// EOF STUDENT CODE
 }
@@ -35,16 +36,15 @@ void GraphNode::AddEdgeToChildNode(std::unique_ptr<GraphEdge> edge)
 
 //// STUDENT CODE
 ////
-void GraphNode::MoveChatbotHere(ChatBot *chatbot)
+void GraphNode::MoveChatbotHere(std::unique_ptr<ChatBot> chatBotPtr)
 {
-    _chatBot = chatbot;
+    _chatBot = std::move(chatBotPtr);
     _chatBot->SetCurrentNode(this);
 }
 
 void GraphNode::MoveChatbotToNewNode(GraphNode *newNode)
 {
-    newNode->MoveChatbotHere(_chatBot);
-    _chatBot = nullptr; // invalidate pointer at source
+    newNode->MoveChatbotHere(std::move(_chatBot));
 }
 ////
 //// EOF STUDENT CODE

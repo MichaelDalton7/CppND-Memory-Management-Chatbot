@@ -104,6 +104,7 @@ ChatBot::ChatBot(ChatBot&& chatBot) {
 
 ChatBot& ChatBot::operator=(ChatBot&& chatBot) {
     std::cout << "ChatBot Move Assignment" << std::endl;
+    
     if (this == &chatBot) {
         return *this;
     }
