@@ -75,6 +75,7 @@ ChatBot& ChatBot::operator=(const ChatBot& chatBot) {
     this->_currentNode = chatBot._currentNode;
     this->_rootNode = chatBot._rootNode;
     this->_chatLogic = chatBot._chatLogic;
+
     return *this;
 }
 
@@ -91,6 +92,9 @@ ChatBot::ChatBot(ChatBot&& chatBot) {
     this->_currentNode = chatBot._currentNode;
     this->_rootNode = chatBot._rootNode;
     this->_chatLogic = chatBot._chatLogic;
+
+    // Update the ChatLogics pointer to point to this Chatbot 
+    this->_chatLogic->SetChatbotHandle(this);
 
     chatBot._image = nullptr;
     chatBot._currentNode = nullptr;
@@ -113,6 +117,9 @@ ChatBot& ChatBot::operator=(ChatBot&& chatBot) {
     this->_currentNode = chatBot._currentNode;
     this->_rootNode = chatBot._rootNode;
     this->_chatLogic = chatBot._chatLogic;
+
+    // Update the ChatLogics pointer to point to this Chatbot 
+    this->_chatLogic->SetChatbotHandle(this);
 
     chatBot._image = nullptr;
     chatBot._currentNode = nullptr;
