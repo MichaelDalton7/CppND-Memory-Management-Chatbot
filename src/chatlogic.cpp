@@ -17,7 +17,6 @@ ChatLogic::ChatLogic()
 {
     //// STUDENT CODE
     ////
-    std::cout << "ChatLogic Constructor" << std::endl;
     ////
     //// EOF STUDENT CODE
 }
@@ -27,7 +26,6 @@ ChatLogic::~ChatLogic()
     //// STUDENT CODE
     ////
 
-    std::cout << "ChatLogic Destructor" << std::endl;
     // Nodes automatically deleted with smart pointers
     // Edges automatically deleted with smart pointers
 
@@ -200,15 +198,15 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
 
     
     // create a smart pointer to an instance of a chatbot
-    std::unique_ptr<ChatBot> chatBotUniquePtr = std::make_unique<ChatBot>("../images/chatbot.png");
-    // Assign a reference to the chat bot to ChatLogics member variable
-    _chatBot = chatBotUniquePtr.get();
+    ChatBot chatBot("../images/chatbot.png");
+    // update chat bot 
+    SetChatbotHandle(&chatBot);
     // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
-    _chatBot->SetChatLogicHandle(this);
+    chatBot.SetChatLogicHandle(this);
     // add chatbot to graph root node
-    _chatBot->SetRootNode(rootNode);
+    chatBot.SetRootNode(rootNode);
     // Move ownership of the chat bot pointer to the root node
-    rootNode->MoveChatbotHere(std::move(chatBotUniquePtr));
+    rootNode->MoveChatbotHere(std::move(chatBot));
     
     ////
     //// EOF STUDENT CODE

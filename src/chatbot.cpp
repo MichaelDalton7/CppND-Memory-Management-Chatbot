@@ -21,7 +21,6 @@ ChatBot::ChatBot()
 ChatBot::ChatBot(std::string filename)
 {
     std::cout << "ChatBot Constructor" << std::endl;
-    
     // invalidate data handles
     _chatLogic = nullptr;
     _rootNode = nullptr;
@@ -33,7 +32,6 @@ ChatBot::ChatBot(std::string filename)
 ChatBot::~ChatBot()
 {
     std::cout << "ChatBot Destructor" << std::endl;
-
     // deallocate heap memory
     if (_image != NULL) // Attention: wxWidgets used NULL and not nullptr
     {
@@ -49,7 +47,7 @@ ChatBot::ChatBot(const ChatBot& chatBot) {
     std::cout << "ChatBot Copy Constructor" << std::endl;
 
     // Delete any owned data so there are no memory leaks
-    if (this->_image != nullptr) {
+    if (this->_image != nullptr && this->_image != NULL) {
         delete this->_image; 
     }
 
@@ -67,7 +65,7 @@ ChatBot& ChatBot::operator=(const ChatBot& chatBot) {
     }
 
     // Delete any owned data so there are no memory leaks
-    if (this->_image != nullptr) {
+    if (this->_image != nullptr && this->_image != NULL) {
         delete this->_image; 
     }
 
@@ -82,11 +80,6 @@ ChatBot& ChatBot::operator=(const ChatBot& chatBot) {
 // Move functions               
 ChatBot::ChatBot(ChatBot&& chatBot) {
     std::cout << "ChatBot Move Constructor" << std::endl;
-
-    // Delete any owned data so there are no memory leaks
-    if (this->_image != nullptr) {
-        delete this->_image; 
-    }
 
     this->_image = chatBot._image;
     this->_currentNode = chatBot._currentNode;
@@ -110,7 +103,7 @@ ChatBot& ChatBot::operator=(ChatBot&& chatBot) {
     }
 
     // Delete any owned data so there are no memory leaks
-    if (this->_image != nullptr) {
+    if (this->_image != nullptr && this->_image != NULL) {
         delete this->_image; 
     }
 
